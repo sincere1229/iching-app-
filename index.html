@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>易占い | Twinkle Star Oracle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a0e1a;--gold:#c9a84c;--gold2:#e8c97a;--gold3:#f5e0a0;--white:#f0eadc;--jade:#7dc4a0;--jade2:#a8e0c0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background-color:var(--navy);color:var(--white);font-family:'Noto Serif JP',serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 40%,rgba(125,196,160,0.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(180,140,60,0.06) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--dur,3s) ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:0.2;}50%{opacity:1;}}
+.container{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 20px 80px;}
+
+.header{text-align:center;margin-bottom:50px;}
+.site-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;}
+.title{font-family:'Cinzel',serif;font-size:clamp(26px,6vw,38px);color:var(--gold2);letter-spacing:3px;margin-bottom:10px;}
+.subtitle{font-size:13px;color:rgba(240,234,220,0.5);letter-spacing:2px;}
+.divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;}
+.free-badge{display:inline-block;background:rgba(125,196,160,0.1);border:1px solid rgba(125,196,160,0.4);border-radius:20px;padding:6px 20px;font-family:'Cinzel',serif;font-size:11px;color:var(--jade2);letter-spacing:2px;margin-top:12px;}
+
+.card{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:40px 36px;margin-bottom:24px;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.card-title{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;text-align:center;}
+.card-subtitle{font-size:12px;color:rgba(240,234,220,0.4);text-align:center;letter-spacing:1px;margin-bottom:28px;line-height:1.8;}
+.form-group{margin-bottom:20px;}
+.form-label{display:block;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+.form-input{width:100%;background:rgba(10,14,26,0.6);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:14px 18px;color:var(--white);font-family:'Noto Serif JP',serif;font-size:14px;outline:none;transition:border-color 0.3s;}
+.form-input:focus{border-color:var(--gold);}
+textarea.form-input{min-height:100px;resize:vertical;line-height:1.8;}
+textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
+
+.btn{width:100%;padding:16px;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);background-size:200% 100%;border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all 0.4s;margin-top:8px;}
+.btn:hover{background-position:100% 0;box-shadow:0 8px 30px rgba(201,168,76,0.35);transform:translateY(-1px);}
+
+/* コイン演出 */
+.loading{display:none;text-align:center;padding:50px 20px;}
+.coins{display:flex;justify-content:center;gap:20px;margin-bottom:30px;}
+.coin{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#8a6a20);display:flex;align-items:center;justify-content:center;font-size:22px;animation:coinFlip 1s ease-in-out infinite;}
+.coin:nth-child(2){animation-delay:0.2s;}
+.coin:nth-child(3){animation-delay:0.4s;}
+@keyframes coinFlip{0%,100%{transform:rotateY(0deg);box-shadow:0 0 10px rgba(201,168,76,0.3);}50%{transform:rotateY(180deg);box-shadow:0 0 20px rgba(201,168,76,0.6);}}
+.loading-text{font-family:'Cinzel',serif;font-size:13px;color:var(--jade2);letter-spacing:3px;animation:blink 1.5s ease-in-out infinite;}
+.loading-sub{font-size:12px;color:rgba(240,234,220,0.3);margin-top:8px;}
+@keyframes blink{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+/* 結果 */
+.result{display:none;}
+
+/* 卦カード */
+.hexagram-card{background:linear-gradient(135deg,rgba(20,32,24,0.98),rgba(10,18,14,0.99));border:1px solid rgba(125,196,160,0.35);border-radius:20px;margin-bottom:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5);}
+.hexagram-top{padding:40px 36px 32px;text-align:center;border-bottom:1px solid rgba(125,196,160,0.1);}
+.hex-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--jade);text-transform:uppercase;margin-bottom:16px;opacity:0.7;}
+.hex-number{font-family:'Cinzel',serif;font-size:13px;color:rgba(240,234,220,0.4);letter-spacing:2px;margin-bottom:8px;}
+.hex-name{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,34px);color:var(--jade2);letter-spacing:4px;margin-bottom:6px;text-shadow:0 0 30px rgba(125,196,160,0.3);}
+.hex-reading{font-size:13px;color:rgba(240,234,220,0.45);letter-spacing:2px;margin-bottom:28px;}
+
+/* 六爻グラフィック */
+.yao-display{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 auto 24px;width:120px;}
+.yao{width:100%;height:10px;border-radius:2px;display:flex;gap:8px;}
+.yao-yang{background:var(--jade);width:100%;border-radius:2px;box-shadow:0 0 8px rgba(125,196,160,0.4);}
+.yao-yin-l,.yao-yin-r{background:var(--jade);flex:1;border-radius:2px;box-shadow:0 0 8px rgba(125,196,160,0.3);}
+
+.hex-keyword{display:inline-block;background:rgba(125,196,160,0.1);border:1px solid rgba(125,196,160,0.3);border-radius:20px;padding:6px 20px;font-size:12px;color:var(--jade2);letter-spacing:2px;}
+
+/* 詳細グリッド */
+.hex-detail{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(125,196,160,0.08);}
+.hex-cell{background:rgba(10,18,14,0.98);padding:20px 24px;}
+.hex-cell-key{font-family:'Cinzel',serif;font-size:10px;color:var(--jade);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;opacity:0.7;}
+.hex-cell-val{font-size:13px;color:rgba(240,234,220,0.85);line-height:1.6;}
+
+/* メッセージセクション */
+.msg-section{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(125,196,160,0.2);border-radius:16px;padding:32px;margin-bottom:16px;}
+.msg-title{font-family:'Cinzel',serif;font-size:12px;color:var(--jade2);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(125,196,160,0.15);}
+.msg-text{font-size:14px;line-height:2.2;color:rgba(240,234,220,0.88);}
+
+.advice-section{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:32px;margin-bottom:16px;}
+.advice-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(201,168,76,0.15);}
+.advice-list{list-style:none;}
+.advice-list li{padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.08);font-size:14px;color:rgba(240,234,220,0.85);display:flex;align-items:flex-start;gap:10px;line-height:1.7;}
+.advice-list li::before{content:'✦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px;}
+
+/* シェア */
+.share-section{text-align:center;margin-bottom:20px;}
+.share-note{font-size:12px;color:rgba(240,234,220,0.35);margin-bottom:14px;}
+.share-btn{display:inline-block;background:rgba(125,196,160,0.1);border:1px solid rgba(125,196,160,0.3);border-radius:8px;color:var(--jade2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:11px 24px;cursor:pointer;margin:0 6px 8px;transition:all 0.3s;}
+.share-btn:hover{background:rgba(125,196,160,0.2);}
+
+/* バナー */
+.bundle{background:linear-gradient(135deg,rgba(100,80,30,0.3),rgba(60,40,10,0.4));border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:36px;text-align:center;margin-bottom:20px;}
+.bundle-title{font-family:'Cinzel',serif;font-size:15px;color:var(--gold2);letter-spacing:3px;margin-bottom:10px;}
+.bundle-desc{font-size:13px;color:rgba(240,234,220,0.6);line-height:1.9;margin-bottom:20px;}
+.bundle-feats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.bundle-feat{font-size:12px;color:rgba(240,234,220,0.5);}
+.bundle-feat::before{content:'✦ ';color:var(--gold);font-size:9px;}
+.bundle-price{font-family:'Cinzel',serif;font-size:24px;color:var(--gold);margin-bottom:4px;}
+.bundle-price-sub{font-size:12px;color:rgba(240,234,220,0.4);margin-bottom:20px;}
+.bundle-btn{background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;padding:14px 36px;cursor:pointer;}
+
+.retry-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(125,196,160,0.2);border-radius:8px;color:var(--jade2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;cursor:pointer;margin-bottom:20px;}
+
+.footer{text-align:center;margin-top:60px;padding-top:30px;border-top:1px solid rgba(201,168,76,0.1);}
+.footer-logo{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:4px;opacity:0.5;margin-bottom:8px;}
+.footer-text{font-size:11px;color:rgba(240,234,220,0.25);}
+
+@media(max-width:480px){
+  .card,.msg-section,.advice-section,.bundle{padding:24px 18px;}
+  .hexagram-top{padding:28px 18px 20px;}
+  .hex-detail{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="stars" id="js-stars"></div>
+<div class="container">
+
+  <header class="header">
+    <div class="site-name">✦ Twinkle Star Oracle ✦</div>
+    <h1 class="title">易占い</h1>
+    <div class="divider"></div>
+    <p class="subtitle">I Ching Reading</p>
+    <div class="free-badge">✦ 完全無料 ✦</div>
+  </header>
+
+  <div id="js-form">
+    <div class="card">
+      <div class="card-title">✦ 易に問いを立てる ✦</div>
+      <div class="card-subtitle">心に浮かぶ問いを素直に書いてください<br>仕事・恋愛・決断・人間関係など何でも</div>
+      <div class="form-group">
+        <label class="form-label">あなたの問い（質問）</label>
+        <textarea id="js-question" class="form-input" placeholder="例：今の仕事を続けるべきか転職すべきか迷っています。易よ、どうか導いてください。"></textarea>
+      </div>
+      <button class="btn" id="js-btn">✦ 卦を立てる ✦</button>
+    </div>
+  </div>
+
+  <div class="loading" id="js-loading">
+    <div class="coins">
+      <div class="coin">☯</div>
+      <div class="coin">☯</div>
+      <div class="coin">☯</div>
+    </div>
+    <div class="loading-text">三枚の銭を投げています…</div>
+    <div class="loading-sub">天地の声を聴いています</div>
+  </div>
+
+  <div class="result" id="js-result">
+
+    <div class="hexagram-card">
+      <div class="hexagram-top">
+        <div class="hex-label">Your Hexagram</div>
+        <div class="hex-number" id="js-hexnum"></div>
+        <div class="hex-name" id="js-hexname"></div>
+        <div class="hex-reading" id="js-hexreading"></div>
+        <div class="yao-display" id="js-yao"></div>
+        <div class="hex-keyword" id="js-hexkw"></div>
+      </div>
+      <div class="hex-detail">
+        <div class="hex-cell">
+          <div class="hex-cell-key">上卦</div>
+          <div class="hex-cell-val" id="js-upper"></div>
+        </div>
+        <div class="hex-cell">
+          <div class="hex-cell-key">下卦</div>
+          <div class="hex-cell-val" id="js-lower"></div>
+        </div>
+        <div class="hex-cell">
+          <div class="hex-cell-key">象意</div>
+          <div class="hex-cell-val" id="js-symbol"></div>
+        </div>
+        <div class="hex-cell">
+          <div class="hex-cell-key">運勢</div>
+          <div class="hex-cell-val" id="js-fortune"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-section">
+      <div class="msg-title">✦ 卦が示すメッセージ</div>
+      <div class="msg-text" id="js-msg"></div>
+    </div>
+
+    <div class="advice-section">
+      <div class="advice-title">✦ 易からのアドバイス</div>
+      <ul class="advice-list" id="js-advice"></ul>
+    </div>
+
+    <div class="share-section">
+      <div class="share-note">あなたの卦をシェアしてみませんか？</div>
+      <button class="share-btn" id="js-share-x">✦ Xでシェアする</button>
+      <button class="share-btn" id="js-share-copy">✦ コピーする</button>
+    </div>
+
+    <div class="bundle">
+      <div class="bundle-title">✦ より深く運命を読み解く ✦</div>
+      <p class="bundle-desc">易占いで大きな方向性がわかったら<br>数秘術・タロット・バードオラクルで<br>さらに詳しく今世の運命を鑑定します。</p>
+      <div class="bundle-feats">
+        <span class="bundle-feat">数秘術鑑定</span>
+        <span class="bundle-feat">タロット3枚引き</span>
+        <span class="bundle-feat">バードオラクル</span>
+        <span class="bundle-feat">統合メッセージ</span>
+      </div>
+      <div class="bundle-price">¥1,980</div>
+      <div class="bundle-price-sub">通常 ¥3,000 → 特別価格</div>
+      <button class="bundle-btn">✦ 総合鑑定を申し込む ✦</button>
+    </div>
+
+    <button class="retry-btn" id="js-retry">✦ 別の問いを立てる ✦</button>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">✦ TWINKLE STAR ORACLE ✦</div>
+    <p class="footer-text">© 2024 Twinkle Lab. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+// 星生成
+var starsEl = document.getElementById('js-stars');
+for (var i = 0; i < 80; i++) {
+  var s = document.createElement('div');
+  s.className = 'star';
+  var sz = Math.random() * 2.5 + 0.5;
+  s.style.width = sz + 'px';
+  s.style.height = sz + 'px';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.setProperty('--dur', (Math.random() * 4 + 2) + 's');
+  s.style.animationDelay = Math.random() * 4 + 's';
+  s.style.opacity = Math.random() * 0.5 + 0.1;
+  starsEl.appendChild(s);
+}
+
+// 八卦データ
+var TRIGRAMS = {
+  '乾':{'読み':'けん','象':'天','性質':'剛健・創造'},
+  '兌':{'読み':'だ','象':'沢','性質':'喜悦・柔和'},
+  '離':{'読み':'り','象':'火','性質':'文明・明智'},
+  '震':{'読み':'しん','象':'雷','性質':'動・決断'},
+  '巽':{'読み':'そん','象':'風','性質':'柔順・浸透'},
+  '坎':{'読み':'かん','象':'水','性質':'険難・知恵'},
+  '艮':{'読み':'ごん','象':'山','性質':'止・堅実'},
+  '坤':{'読み':'こん','象':'地','性質':'従順・包容'}
+};
+
+// 代表的な32卦のデータ（偶数番号と奇数番号を交互に）
+var HEXAGRAMS = [
+  {num:1,name:'乾為天',read:'けんいてん',upper:'乾',lower:'乾',kw:'創造・天の力',symbol:'力強い天の創造エネルギー',fortune:'大吉',yao:[1,1,1,1,1,1],
+   msg:'天が重なり合う純粋な陽のエネルギーが満ちています。あなたには今、強大な創造力と推進力が与えられています。この卦は64卦の中で最も力強い大吉卦です。\n\n大きな志を持って堂々と前進する時です。リーダーシップを発揮し、周囲を引っ張っていく力があなたの中に充満しています。自分の可能性を信じ、大きなビジョンを描いて行動してください。天の意志があなたの背中を押しています。',
+   advice:['大きな目標を掲げて積極的に行動する時','リーダーシップを発揮して周囲を導く','自信を持って決断し前進する','謙虚さを忘れずに力を発揮する']},
+  {num:2,name:'坤為地',read:'こんいち',upper:'坤',lower:'坤',kw:'受容・大地の力',symbol:'大地のように包み込む受容力',fortune:'大吉',yao:[0,0,0,0,0,0],
+   msg:'大地が重なり合う純粋な陰のエネルギーです。受け入れ、育み、支える力があなたの中に満ちています。今は自分から動くより、流れに従い、縁のある人やものを丁寧に育てる時期です。\n\n柔らかさの中に無限の力があります。コツコツと積み上げる誠実さが今最も大切な姿勢です。周囲の人を温かく包み込み、信頼関係を深めることで大きな実りがもたらされます。',
+   advice:['焦らず着実に積み上げていく','周囲の人を温かくサポートする','受け身で流れに従う姿勢が吉','誠実さと継続が最大の武器']},
+  {num:3,name:'水雷屯',read:'すいらいちゅん',upper:'坎',lower:'震',kw:'始まりの困難',symbol:'雲雨が重なる創生のエネルギー',fortune:'中吉',yao:[1,0,0,0,1,0],
+   msg:'新しい始まりに伴う困難を示す卦です。草木が大地を押し分けて芽吹くように、産みの苦しみの中に大きな可能性が宿っています。今は困難に見えても、これは成長のための試練です。\n\n諦めずに根を張り続けることが重要です。信頼できる人の助けを借りながら、焦らず一歩一歩進んでください。この困難を乗り越えた先に、豊かな実りが待っています。',
+   advice:['困難を成長の機会と捉える','信頼できる人に相談・協力を求める','焦らず着実に根を張る','諦めなければ必ず道は開ける']},
+  {num:11,name:'地天泰',read:'ちてんたい',upper:'坤',lower:'乾',kw:'平和・繁栄',symbol:'天地が調和する大いなる平和',fortune:'大吉',yao:[0,0,0,1,1,1],
+   msg:'天地が調和し、陰陽のエネルギーが完璧なバランスをとっている最良の卦のひとつです。あらゆる物事が順調に流れ、関係性も良好で、運気は絶頂に向かっています。\n\n今はまさに行動の時です。この好機を最大限に活かして、温めてきた計画を実行に移してください。人との交流も活発になり、協力者や良縁が現れやすい時期です。喜びと繁栄があなたのもとへ訪れています。',
+   advice:['好機を逃さず積極的に行動する','良縁・協力者との縁を大切にする','計画してきたことを実行に移す','感謝と謙虚さで運気をさらに高める']},
+  {num:12,name:'天地否',read:'てんちひ',upper:'乾',lower:'坤',kw:'停滞・忍耐',symbol:'天地が離れ交わらない閉塞',fortune:'凶',yao:[1,1,1,0,0,0],
+   msg:'天と地が離れ離れになり、気の流れが滞っている状態です。今は物事が思うように進まず、人間関係にも摩擦が生じやすい時期です。しかしこれは永遠には続きません。\n\n今は無理に動こうとせず、内側を整える時間と捉えましょう。力を蓄え、準備を整え、流れが変わるのを待つ知恵が必要です。この逆境の中でも小さな善を積み重ねることで、必ず転換点が訪れます。',
+   advice:['無理に動かず内側を整える時','力を蓄え次の好機を待つ','小さな善行と誠実さを積み重ねる','逆境は必ず転換点に変わると信じる']},
+  {num:13,name:'天火同人',read:'てんかどうじん',upper:'乾',lower:'離',kw:'協力・同志',symbol:'天下に同志を求める大きな志',fortune:'吉',yao:[1,1,1,1,0,1],
+   msg:'同じ志を持つ仲間と力を合わせることで大きな成果が生まれる卦です。一人では難しいことも、心を合わせた仲間とともに取り組むことで道が開けます。\n\n人との絆と協力関係を大切にする時です。信頼できる仲間を見つけ、共通の目標に向かって共に歩んでください。また、自分の考えを広く表明することで共鳴する人が集まってきます。開かれた心で人とつながることが鍵です。',
+   advice:['同じ志の仲間と力を合わせる','自分の考えを広く発信する','人との信頼関係を丁寧に築く','一人で抱え込まず協力を求める']},
+  {num:17,name:'沢雷随',read:'たくらいずい',upper:'兌',lower:'震',kw:'随順・柔軟',symbol:'雷が沢の下に潜む柔軟な変化',fortune:'吉',yao:[0,1,1,0,0,1],
+   msg:'時代の流れや周囲の動きに柔軟に対応することが吉をもたらす卦です。固執せず、変化を受け入れながら賢く対応することで、思わぬ幸運が訪れます。\n\n「随」は従うことですが、盲目的な服従ではなく、時の流れを読んで最善の選択をすることを意味しています。あなたの柔軟性と適応力が今最大の武器です。流れに乗りながらも、自分の芯をしっかり保ってください。',
+   advice:['時流を読んで柔軟に対応する','固執を手放し変化を受け入れる','流れに乗りながら芯はぶらさない','謙虚に学び続ける姿勢が開運に']},
+  {num:22,name:'山火賁',read:'さんかひ',upper:'艮',lower:'離',kw:'美・装い',symbol:'火が山麓を照らす美しい光景',fortune:'中吉',yao:[1,0,0,1,0,1],
+   msg:'美しさと装いの卦です。外見を整え、表現を磨くことが重要な時期です。内面の充実を美しい形で表現することで、周囲から認められ、良い印象を与えられます。\n\nただし、飾りすぎには注意が必要です。本質的な誠実さに美しい表現が加わることで真の輝きが生まれます。芸術・デザイン・コミュニケーション・人前に出る機会に特に良い影響をもたらす卦です。',
+   advice:['外見や表現を丁寧に磨く','見た目と中身の両方を大切に','美しい言葉と態度で人と接する','表現力を活かした活動が吉']},
+  {num:29,name:'坎為水',read:'かんいすい',upper:'坎',lower:'坎',kw:'険難・知恵',symbol:'深い淵が重なる試練の時',fortune:'凶→吉',yao:[0,1,0,0,1,0],
+   msg:'険しい水が重なり合う、試練の卦です。しかし水は険しい谷をも流れ続けます。今あなたが直面している困難は、乗り越えることで深い知恵と経験を与えてくれます。\n\n危険を正確に見極め、慎重に一歩一歩進んでください。誠実さを保ち、信頼できる人との繋がりを大切にすることで、この難局を乗り越えられます。水のように流れ続ける意志を持てば、必ず出口が見えてきます。',
+   advice:['危険を正確に見極めて慎重に行動する','誠実さを最後まで保ち続ける','信頼できる人との絆を大切にする','困難を知恵と経験に変える覚悟を持つ']},
+  {num:30,name:'離為火',read:'りいか',upper:'離',lower:'離',kw:'文明・明智',symbol:'二つの太陽が輝く燃える知性',fortune:'吉',yao:[1,0,1,1,0,1],
+   msg:'二つの火が重なり燃え輝く、文明と知性の卦です。あなたの中に輝く知性と情熱が、周囲を照らし多くの人を引きつけています。この明るさと熱量を大切にしてください。\n\n学問・芸術・コミュニケーションにおいて優れた能力が発揮できる時期です。自分の才能と情熱を信じて、積極的に表現し発信してください。ただし、火は燃え尽きることもあります。心身のバランスを保ちながら輝き続けることが大切です。',
+   advice:['才能と情熱を積極的に表現する','学び・芸術・発信活動が吉','自分の光を周囲と分かち合う','燃え尽きないよう心身を整える']},
+  {num:31,name:'沢山咸',read:'たくさんかん',upper:'兌',lower:'艮',kw:'感応・縁',symbol:'山と沢が感応し合う出会い',fortune:'大吉',yao:[0,1,1,1,0,0],
+   msg:'心が感応し合う出会いと縁の卦です。人と人との深い共鳴、恋愛や人間関係において特に良い影響をもたらします。あなたの心が開かれ、素直な感情が良縁を引き寄せています。\n\n理屈より感情を大切にしてください。打算なく心から接することで、深い絆が生まれます。恋愛においては積極的な行動が吉です。ビジネスでも心が通じ合うパートナーとの出会いが期待できます。',
+   advice:['素直な気持ちで人と接する','打算なく感情を大切にする','恋愛・人間関係に積極的になる','心から共鳴できる縁を大切にする']},
+  {num:32,name:'雷風恒',read:'らいふうこう',upper:'震',lower:'巽',kw:'恒久・継続',symbol:'雷と風が恒久に続く持続の力',fortune:'吉',yao:[1,0,0,1,1,0],
+   msg:'恒久・継続の卦です。長く続けることの大切さと、変わらない誠実さが吉をもたらします。今取り組んでいることを継続する意志を持ち続けることが最大の開運策です。\n\nすぐに結果が出なくても、諦めないでください。この卦が示すのは「恒」という字の意味そのもの、長く変わらない心です。コツコツと積み上げてきたものが、やがて大きな実りとなって現れます。継続は力なり、を体現する時です。',
+   advice:['継続と誠実さが最大の武器と知る','すぐ結果が出なくても諦めない','コツコツ積み上げた努力を信じる','一貫した姿勢で物事に取り組む']},
+  {num:36,name:'地火明夷',read:'ちかめいい',upper:'坤',lower:'離',kw:'忍耐・隠忍',symbol:'太陽が大地に沈む試練の時',fortune:'凶→吉',yao:[0,0,0,1,0,1],
+   msg:'光が地下に隠れる試練の時を示す卦です。今は才能や努力が正当に評価されない、または困難な状況に置かれているかもしれません。しかしこれは永久ではありません。\n\n内なる光を消さないことが最も大切です。表面的には従順に振る舞いながら、内側では志と知恵を磨き続けてください。嵐が過ぎれば必ず太陽は再び昇ります。今は力を蓄え、未来の飛躍に備える準備の時です。',
+   advice:['内なる志と光を絶やさない','表面は柔らかく内面は強く保つ','力を蓄え飛躍の時に備える','今の試練が未来の糧になると信じる']},
+  {num:40,name:'雷水解',read:'らいすいかい',upper:'震',lower:'坎',kw:'解放・解決',symbol:'雷雨の後の大地の解放',fortune:'吉',yao:[1,0,0,0,1,0],
+   msg:'長く続いた困難や緊張が解けていく解放の卦です。雷雨の後に大地が潤うように、あなたを縛っていたものから解き放たれる時が来ています。\n\n今まで抱えていた問題が解決に向かい、人間関係の摩擦も和らいでいきます。過去の失敗や過ちを水に流し、新しいスタートを切るのに最良の時です。執着を手放し、軽やかに前に進んでください。春が来た大地のように、あなたの人生が動き始めます。',
+   advice:['執着と過去を手放して前に進む','解決に向けた積極的な行動を','人間関係の和解・修復が吉','軽やかに新しいスタートを切る']},
+  {num:42,name:'風雷益',read:'ふうらいえき',upper:'巽',lower:'震',kw:'増益・発展',symbol:'風と雷が益をもたらす発展',fortune:'大吉',yao:[1,1,0,0,0,1],
+   msg:'益が増し発展していく大吉の卦です。今のあなたには幸運の風が吹いており、取り組んでいることが実を結びやすい最良の時期です。大きな変化や新しい挑戦にも吉です。\n\n利他の精神、つまり人のためになることをすると、その何倍もの恵みが返ってきます。今この好機を逃さず、積極的に行動してください。また、高い目標を持つことで、さらに大きな益が引き寄せられます。',
+   advice:['この好機を逃さず積極的に行動する','人のためになることを率先して行う','大きな目標を持って挑戦する','今が最良のタイミングと知って動く']},
+  {num:48,name:'水風井',read:'すいふうせい',upper:'坎',lower:'巽',kw:'根本・源泉',symbol:'深い井戸から湧き出る命の水',fortune:'中吉',yao:[0,1,0,1,1,0],
+   msg:'深い井戸のように、根本に立ち返ることを示す卦です。あなたの中に豊かな才能と知恵という井戸があります。今はその源泉を改めて見つめ直し、磨く時期です。\n\n焦って表面的な成果を求めるより、基礎・本質・根本を丁寧に整えることが長期的な成功につながります。また、あなたの持つ知識やスキルは多くの人の役に立てるはずです。惜しみなく分かち合うことで、さらに豊かな水が湧き出てきます。',
+   advice:['基礎と本質を丁寧に見直す','自分の中にある才能という井戸を磨く','知識やスキルを惜しみなく分かち合う','焦らず根本から積み上げる']},
+  {num:49,name:'沢火革',read:'たくかかく',upper:'兌',lower:'離',kw:'変革・刷新',symbol:'火が沢を沸かす大変革',fortune:'大吉',yao:[0,1,1,1,0,1],
+   msg:'大きな変革と刷新を示す卦です。古いものを手放し、新しいものへと生まれ変わる時が来ています。今感じている変化への衝動は、正しい直感です。\n\n過去の習慣・考え方・環境を大胆に刷新することで、新しい可能性が開けます。ただし、変革は慎重に準備してから行うことが大切です。人の心を得た上での変革は大きな成功をもたらします。あなたの中の革命の炎を信じてください。',
+   advice:['大胆な変革・刷新に踏み切る','古い習慣や考え方を手放す','準備を整えてから行動する','変化を恐れず自分を刷新する']},
+  {num:51,name:'震為雷',read:'しんいらい',upper:'震',lower:'震',kw:'震動・覚醒',symbol:'雷が重なり響き渡る覚醒',fortune:'中吉',yao:[1,0,0,1,0,0],
+   msg:'雷が重なり大地を震わせる、驚きと覚醒の卦です。突然の変化や衝撃的な出来事が起こるかもしれませんが、それはあなたを目覚めさせるための天の働きです。\n\n驚きの中でも冷静さを保ち、その震動の中から本質を見出してください。この経験があなたを次のステージへと引き上げます。困難な変化の中でも笑顔を失わない人には、幸運が舞い込んできます。雷の後には必ず清々しい空気が訪れます。',
+   advice:['突然の変化を恐れず受け入れる','冷静さを保ちながら本質を見極める','驚きの中から学びと成長を得る','変化の後の清々しさを信じる']},
+  {num:52,name:'艮為山',read:'ごんいさん',upper:'艮',lower:'艮',kw:'静止・内省',symbol:'山が重なる静かな内省',fortune:'中吉',yao:[0,0,1,0,0,1],
+   msg:'山が重なり静かに佇む、止まることと内省の卦です。今は外に向かって動くより、立ち止まって自分の内側を見つめ直す時期です。\n\n行動を一時止め、自分が本当に望むことは何か、何のために動いているのかを深く問い直してください。この静寂の中から、次の大きな一歩への確かな方向性が見えてきます。山のように動じない心を養うことが、今あなたに最も必要なことです。',
+   advice:['立ち止まって内省する時間を持つ','本当に望むことを深く問い直す','焦らず静かに次の方向性を見極める','山のような動じない心を養う']},
+  {num:54,name:'雷沢帰妹',read:'らいたくきまい',upper:'震',lower:'兌',kw:'焦り・不正な縁',symbol:'雷と沢の不釣り合いな関係',fortune:'凶',yao:[1,0,0,0,1,1],
+   msg:'焦りや不釣り合いな縁・状況を示す卦です。今の状況に無理や強引さがないか振り返ってみてください。焦りから動くと後悔につながりやすい時です。\n\nしかしこの卦は終わりではありません。自分の立場と役割を正しく認識し、誠実に行動することで、この状況を乗り越えられます。焦らず、自分の本来の姿に戻ることが最善策です。縁は正しい時に正しい形で結ばれます。',
+   advice:['焦って行動しない','現状を正直に見つめ直す','自分の本来の姿と誠実さを取り戻す','時の熟するのを待つ勇気を持つ']},
+  {num:57,name:'巽為風',read:'そんいふう',upper:'巽',lower:'巽',kw:'浸透・柔軟',symbol:'風が重なり柔らかく浸透する',fortune:'吉',yao:[1,1,0,1,1,0],
+   msg:'風が柔らかく重なり、どこにでも入り込む浸透の卦です。強引な力より、柔軟さと粘り強さで物事を進める時期です。水や風のように、あらゆる隙間に浸透していく戦略が有効です。\n\n人の話をよく聞き、空気を読み、タイミングを見計らって行動することで、思わぬところから道が開けます。小さな積み重ねが大きな変化をもたらします。あなたの柔らかさと適応力こそが最大の強みです。',
+   advice:['柔軟さと粘り強さで物事を進める','人の話をよく聞きタイミングを見極める','小さな積み重ねを大切にする','強引さより浸透する力を使う']},
+  {num:58,name:'兌為沢',read:'だいたく',upper:'兌',lower:'兌',kw:'喜悦・悦び',symbol:'沢が重なる喜びと交流',fortune:'吉',yao:[0,1,1,0,1,1],
+   msg:'喜びと悦楽、そして人との交流を示す吉卦です。今はあなたの周りに喜びと笑顔が満ちています。人と交わり、語り合い、共に喜ぶことで運気がさらに高まります。\n\n素直な喜びの表現がさらなる幸運を引き寄せます。笑顔で人に接し、喜びを分かち合ってください。悩みがあっても、まず笑顔で向き合うことで解決の糸口が見えてきます。今日は誰かと一緒に笑える時間を作りましょう。',
+   advice:['素直な喜びを表現する','人との交流を積極的に楽しむ','笑顔で物事に向き合う','喜びを周囲と分かち合う']},
+  {num:61,name:'風沢中孚',read:'ふうたくちゅうふ',upper:'巽',lower:'兌',kw:'誠信・真心',symbol:'風が沢に吹き込む純粋な真心',fortune:'大吉',yao:[1,1,0,0,1,1],
+   msg:'真心と誠信の卦です。あなたの誠実さと純粋な気持ちが、人々の心に深く届いています。打算なく真心から行動することが最大の吉をもたらします。\n\n誠実さは最強の武器です。言葉より行動で、行動より真心で人と接してください。今のあなたの誠実なエネルギーは、遠く離れた人の心にまで届き、思わぬ形で縁と幸運を引き寄せます。信頼関係を大切にすることで、大きな実りがもたらされます。',
+   advice:['打算なく真心から行動する','言葉より行動・行動より真心で','誠実さを最大の強みとして活かす','信頼関係を何より大切にする']},
+  {num:63,name:'水火既済',read:'すいかきさい',upper:'坎',lower:'離',kw:'完成・整然',symbol:'水と火が調和した完成の姿',fortune:'中吉→注意',yao:[0,1,0,1,0,1],
+   msg:'水と火が完璧に調和した完成の卦です。物事が整い、目標の完成が近づいています。しかし、完成した後の油断が最大の落とし穴です。\n\n今の安定した状況に慢心せず、常に次の準備と改善を続けることが重要です。成功の後こそ謙虚さと緊張感を保ってください。現状維持のための努力を怠ると、崩れが始まります。完成に満足しつつも、さらなる高みを目指す意識を持ち続けましょう。',
+   advice:['完成・成功に慢心しない','常に改善と次の準備を続ける','謙虚さと緊張感を保つ','安定の中でも向上心を忘れない']},
+  {num:64,name:'火水未済',read:'かすいびさい',upper:'離',lower:'坎',kw:'未完・可能性',symbol:'火と水が交わらない未完の状態',fortune:'中吉',yao:[1,0,1,0,1,0],
+   msg:'まだ完成していない、しかし可能性に満ちた卦です。今は混沌としているように見えますが、その中に無限の可能性が宿っています。完成への道はすぐそこです。\n\n焦らず、慎重に最後まで丁寧に取り組んでください。ゴール直前での油断や焦りが最大の敵です。あと少しの辛抱です。この未完の状態を丁寧に整えることで、次の大きな完成と繁栄が待っています。',
+   advice:['焦らず慎重に最後まで取り組む','ゴール直前の油断に注意する','混沌の中の可能性を信じる','丁寧に積み上げれば必ず完成する']},
+];
+
+var currentHex = null;
+var currentQuestion = '';
+
+function calcHex(question) {
+  var hash = 0;
+  var now = new Date();
+  var str = question + now.toDateString();
+  for (var i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash = hash & hash;
+  }
+  var idx = (hash < 0 ? -hash : hash) % HEXAGRAMS.length;
+  return HEXAGRAMS[idx];
+}
+
+function renderYao(yao) {
+  var html = '';
+  for (var i = yao.length - 1; i >= 0; i--) {
+    if (yao[i] === 1) {
+      html += '<div class="yao"><div class="yao-yang"></div></div>';
+    } else {
+      html += '<div class="yao"><div class="yao-yin-l"></div><div class="yao-yin-r"></div></div>';
+    }
+  }
+  return html;
+}
+
+document.getElementById('js-btn').addEventListener('click', function() {
+  var question = document.getElementById('js-question').value.trim();
+  if (!question) {
+    alert('問いを入力してください');
+    return;
+  }
+  currentQuestion = question;
+
+  document.getElementById('js-form').style.display = 'none';
+  document.getElementById('js-loading').style.display = 'block';
+  document.getElementById('js-result').style.display = 'none';
+
+  setTimeout(function() {
+    var hex = calcHex(question);
+    currentHex = hex;
+
+    document.getElementById('js-hexnum').textContent = '第' + hex.num + '卦';
+    document.getElementById('js-hexname').textContent = hex.name;
+    document.getElementById('js-hexreading').textContent = hex.read;
+    document.getElementById('js-yao').innerHTML = renderYao(hex.yao);
+    document.getElementById('js-hexkw').textContent = hex.kw;
+    document.getElementById('js-upper').textContent = hex.upper + '（' + TRIGRAMS[hex.upper].象 + '）';
+    document.getElementById('js-lower').textContent = hex.lower + '（' + TRIGRAMS[hex.lower].象 + '）';
+    document.getElementById('js-symbol').textContent = hex.symbol;
+    document.getElementById('js-fortune').textContent = hex.fortune;
+    document.getElementById('js-msg').innerHTML = hex.msg.replace(/\n/g, '<br>');
+
+    var adviceHtml = '';
+    for (var i = 0; i < hex.advice.length; i++) {
+      adviceHtml += '<li>' + hex.advice[i] + '</li>';
+    }
+    document.getElementById('js-advice').innerHTML = adviceHtml;
+
+    document.getElementById('js-loading').style.display = 'none';
+    document.getElementById('js-result').style.display = 'block';
+    window.scrollTo(0, 0);
+  }, 2500);
+});
+
+document.getElementById('js-retry').addEventListener('click', function() {
+  document.getElementById('js-result').style.display = 'none';
+  document.getElementById('js-form').style.display = 'block';
+  document.getElementById('js-question').value = '';
+  window.scrollTo(0, 0);
+});
+
+document.getElementById('js-share-x').addEventListener('click', function() {
+  if (!currentHex) return;
+  var text = '【易占い】\n「' + currentQuestion + '」\n\n卦：' + currentHex.name + '（第' + currentHex.num + '卦）\nキーワード：' + currentHex.kw + '\n運勢：' + currentHex.fortune + '\n\n✦ Twinkle Star Oracleで易占いを試してみよう\nhttps://iching-app.vercel.app';
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+});
+
+document.getElementById('js-share-copy').addEventListener('click', function() {
+  if (!currentHex) return;
+  var text = '【易占い】\n「' + currentQuestion + '」\n\n卦：' + currentHex.name + '（第' + currentHex.num + '卦）\nキーワード：' + currentHex.kw + '\n運勢：' + currentHex.fortune + '\n\n✦ Twinkle Star Oracleで易占いを試してみよう\nhttps://iching-app.vercel.app';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function(){ alert('コピーしました！'); });
+  } else {
+    alert('コピーできませんでした');
+  }
+});
+</script>
+</body>
+</html>
