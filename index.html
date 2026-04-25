@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -179,7 +180,7 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
 
     <div class="msg-section">
       <div class="msg-title">✦ 卦が示すメッセージ</div>
-      <div class="msg-text" id="js-msg"></div>
+      <div class="msg-text" id="js-msg"></div><div style="position:relative;margin-top:12px;"><div class="msg-text" id="js-msg-blur" style="filter:blur(5px);user-select:none;pointer-events:none;opacity:0.5;"></div><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,14,26,0.97) 50%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;"><a href="https://lin.ee/XHDFrA8" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:12px 24px;text-decoration:none;display:inline-block;">✦ 続きをLINEで受け取る（無料）</a></div></div>
     </div>
 
     <div class="advice-section">
@@ -204,7 +205,7 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
       </div>
       <div class="bundle-price">¥1,980</div>
       <div class="bundle-price-sub">通常 ¥3,000 → 特別価格</div>
-      <button class="bundle-btn">✦ 総合鑑定を申し込む ✦</button>
+      <a href="https://lin.ee/XHDFrA8" target="_blank" class="bundle-btn">✦ 総合鑑定を申し込む ✦</a>
     </div>
 
     <button class="retry-btn" id="js-retry">✦ 別の問いを立てる ✦</button>
@@ -377,7 +378,7 @@ document.getElementById('js-btn').addEventListener('click', function() {
     document.getElementById('js-lower').textContent = hex.lower + '（' + TRIGRAMS[hex.lower].象 + '）';
     document.getElementById('js-symbol').textContent = hex.symbol;
     document.getElementById('js-fortune').textContent = hex.fortune;
-    document.getElementById('js-msg').innerHTML = hex.msg.replace(/\n/g, '<br>');
+    var _fullMsg = hex.msg.replace(/\n/g, '<br>'); var _half = Math.floor(_fullMsg.length/2); document.getElementById('js-msg').innerHTML = _fullMsg.substring(0,_half); document.getElementById('js-msg-blur').innerHTML = _fullMsg.substring(_half);
 
     var adviceHtml = '';
     for (var i = 0; i < hex.advice.length; i++) {
