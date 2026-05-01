@@ -78,30 +78,31 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
 .share-btn{display:inline-block;background:rgba(125,196,160,0.1);border:1px solid rgba(125,196,160,0.3);border-radius:8px;color:var(--jade2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:11px 24px;cursor:pointer;margin:0 6px 8px;transition:all 0.3s;}
 .share-btn:hover{background:rgba(125,196,160,0.2);}
 
-/* 2択CTAグリッド */
-.two-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
-.cta-pay{display:flex;flex-direction:column;align-items:center;background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid rgba(201,168,76,0.5);border-radius:12px;padding:14px 10px;text-decoration:none;transition:all 0.3s;text-align:center;}
-.cta-pay:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.25);}
-.cta-line{display:flex;flex-direction:column;align-items:center;background:transparent;border:1px solid rgba(240,234,220,0.12);border-radius:12px;padding:14px 10px;text-decoration:none;transition:all 0.3s;text-align:center;}
-.cta-line:hover{border-color:rgba(201,168,76,0.3);}
+/* ★ 手相ナッジ */
+.teso-nudge{background:linear-gradient(135deg,rgba(232,160,192,0.12),rgba(180,100,160,0.06));border:1px solid rgba(232,160,192,0.25);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center;}
+.teso-nudge-title{font-size:14px;color:rgba(240,234,220,0.9);font-weight:600;margin-bottom:10px;line-height:1.7;}
+.teso-nudge-body{font-size:12px;color:rgba(240,234,220,0.6);line-height:2;margin-bottom:16px;}
+.teso-nudge-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#06c755,#04a844);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;padding:14px 28px;text-decoration:none;transition:all 0.2s;}
+.teso-nudge-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(6,199,85,0.4);}
 
-/* ¥1,980直課金 */
-.mid-cta{display:block;background:linear-gradient(135deg,rgba(100,60,140,0.2),rgba(60,30,80,0.15));border:1px solid rgba(155,89,182,0.35);border-radius:12px;padding:14px 16px;text-decoration:none;text-align:center;transition:all 0.3s;margin-bottom:12px;}
-.mid-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(155,89,182,0.2);}
-
-/* 総合鑑定 */
-.bundle{background:linear-gradient(135deg,rgba(100,80,30,0.3),rgba(60,40,10,0.4));border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:36px;text-align:center;margin-bottom:20px;}
-.bundle-title{font-family:'Cinzel',serif;font-size:15px;color:var(--gold2);letter-spacing:3px;margin-bottom:10px;}
-.bundle-desc{font-size:13px;color:rgba(240,234,220,0.6);line-height:1.9;margin-bottom:20px;}
-.bundle-feats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
-.bundle-feat{font-size:12px;color:rgba(240,234,220,0.5);}
-.bundle-feat::before{content:'✦ ';color:var(--gold);font-size:9px;}
-.bundle-price{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);margin-bottom:4px;}
-.bundle-price-sub{font-size:12px;color:rgba(240,234,220,0.4);margin-bottom:20px;}
+/* ★ AI総合鑑定（統一版） */
+.bundle{background:linear-gradient(135deg,rgba(100,80,30,0.3),rgba(60,40,10,0.4));border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:32px;text-align:center;margin-bottom:20px;}
+.bundle-label{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;opacity:0.8;}
+.bundle-title{font-family:'Cinzel',serif;font-size:16px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px;}
+.bundle-desc{font-size:13px;color:rgba(240,234,220,0.7);line-height:1.9;margin-bottom:16px;}
+.bundle-price-orig{font-size:12px;color:rgba(240,234,220,0.4);text-decoration:line-through;margin-bottom:4px;}
+.bundle-price{font-family:'Cinzel',serif;font-size:30px;color:var(--gold);margin-bottom:4px;}
+.bundle-price-sub{font-size:11px;color:rgba(240,234,220,0.4);margin-bottom:20px;}
 .bundle-btn{display:inline-block;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;padding:14px 36px;cursor:pointer;text-decoration:none;transition:all 0.3s;}
 .bundle-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.3);}
 
-/* 回遊導線 */
+/* LINE導線 */
+.line-block{background:linear-gradient(135deg,rgba(0,185,0,0.12),rgba(0,150,0,0.08));border:1px solid rgba(0,200,100,0.3);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center;}
+.line-block-title{font-size:13px;color:rgba(240,234,220,0.7);line-height:1.8;margin-bottom:14px;}
+.line-block-title strong{color:#4ede88;display:block;font-size:15px;margin-bottom:4px;}
+.line-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#06c755,#04a844);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;padding:14px 28px;text-decoration:none;transition:all 0.2s;}
+.line-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(6,199,85,0.4);}
+
 .rec-section{margin-bottom:20px;}
 .rec-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:3px;text-align:center;margin-bottom:14px;opacity:0.8;}
 .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
@@ -126,7 +127,6 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
 </style>
 </head>
 <body>
-<!-- ヘッダー -->
 <div style="position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,rgba(10,14,26,0.97),rgba(15,20,40,0.98));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;">
   <a href="https://twinkle-lab.jp/star" style="font-size:12px;color:rgba(201,168,76,0.7);text-decoration:none;letter-spacing:1px;">← ポータルに戻る</a>
   <div style="font-family:Cinzel,serif;font-size:12px;color:#c9a84c;letter-spacing:2px;text-align:center;">✦ Twinkle Star Oracle ✦</div>
@@ -168,24 +168,6 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
 
   <div class="result" id="js-result">
 
-    <!-- ① 上部CTA：¥500直課金 + LINE 2択 -->
-    <div style="background:linear-gradient(135deg,rgba(100,60,140,0.3),rgba(60,30,80,0.4));border:1px solid rgba(201,168,76,0.35);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center;">
-      <div style="font-size:12px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:6px;">ここまでは表面の結果です</div>
-      <div style="font-size:15px;color:#f5e0a0;font-weight:500;margin-bottom:14px;">🔮 本当の運命はここからです</div>
-      <div class="two-cta">
-        <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" class="cta-pay">
-          <div style="font-size:9px;color:rgba(201,168,76,0.7);letter-spacing:2px;margin-bottom:4px;">即・結果表示</div>
-          <div style="font-size:13px;color:var(--white);font-weight:600;margin-bottom:4px;">今すぐ詳しく知る</div>
-          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);font-weight:700;">¥500</div>
-        </a>
-        <a href="https://lin.ee/XHDFrA8" target="_blank" class="cta-line">
-          <div style="font-size:9px;color:rgba(240,234,220,0.4);letter-spacing:2px;margin-bottom:4px;">完全無料</div>
-          <div style="font-size:13px;color:rgba(240,234,220,0.7);margin-bottom:4px;">あとで受け取る</div>
-          <div style="font-family:'Cinzel',serif;font-size:20px;color:#7ac4a0;font-weight:700;">¥0</div>
-        </a>
-      </div>
-    </div>
-
     <!-- 卦カード -->
     <div class="hexagram-card">
       <div class="hexagram-top">
@@ -204,30 +186,16 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
       </div>
     </div>
 
-    <!-- ④ メッセージ：60%以上ブラー -->
+    <!-- メッセージ（全文表示） -->
     <div class="msg-section">
       <div class="msg-title">✦ 卦が示すメッセージ</div>
       <div class="msg-text" id="js-msg"></div>
-      <div style="position:relative;margin-top:12px;">
-        <div class="msg-text" id="js-msg-blur" style="filter:blur(6px);user-select:none;pointer-events:none;opacity:0.45;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,14,26,0.98) 40%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;">
-          <!-- ④ ¥500直課金（LINEではなく直課金） -->
-          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:12px 24px;text-decoration:none;display:inline-block;transition:all 0.3s;">✦ 今すぐ詳しく知る（¥500）</a>
-        </div>
-      </div>
     </div>
 
-    <!-- ① アドバイス：2件のみ表示 -->
+    <!-- アドバイス（全件表示） -->
     <div class="advice-section">
       <div class="advice-title">✦ 易からのアドバイス</div>
       <ul class="advice-list" id="js-advice"></ul>
-      <!-- 残りはブラー -->
-      <div style="position:relative;margin-top:8px;">
-        <ul class="advice-list" id="js-advice-blur" style="filter:blur(5px);user-select:none;pointer-events:none;opacity:0.4;"></ul>
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(15,22,40,0.98) 45%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;">
-          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:transparent;border:1px solid rgba(201,168,76,0.4);border-radius:20px;color:rgba(201,168,76,0.8);font-family:Cinzel,serif;font-size:11px;letter-spacing:2px;padding:8px 20px;text-decoration:none;">✦ 全てのアドバイスを見る（¥500）</a>
-        </div>
-      </div>
     </div>
 
     <div class="share-section">
@@ -236,47 +204,45 @@ textarea.form-input::placeholder{color:rgba(240,234,220,0.25);}
       <button class="share-btn" id="js-share-copy">✦ コピーする</button>
     </div>
 
-    <!-- ② 下部CTA（強め）：2択 + ¥1,980 -->
-    <div style="background:linear-gradient(135deg,rgba(26,32,64,0.95),rgba(15,22,40,0.98));border:1px solid rgba(201,168,76,0.35);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center;">
-      <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:16px;">✦ もっと深く知りたい方へ ✦</div>
-      <div class="two-cta">
-        <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" class="cta-pay">
-          <div style="font-size:9px;color:rgba(201,168,76,0.7);letter-spacing:2px;margin-bottom:4px;">即・結果表示</div>
-          <div style="font-size:12px;color:var(--white);font-weight:600;margin-bottom:6px;">今すぐ詳しく見る</div>
-          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);">¥500</div>
-          <div style="margin-top:8px;background:linear-gradient(135deg,#8a6a20,var(--gold));color:var(--navy);font-size:11px;font-weight:700;border-radius:8px;padding:6px 12px;">今すぐ鑑定する</div>
-        </a>
-        <a href="https://lin.ee/XHDFrA8" target="_blank" class="cta-line">
-          <div style="font-size:9px;color:rgba(240,234,220,0.4);letter-spacing:2px;margin-bottom:4px;">完全無料</div>
-          <div style="font-size:12px;color:rgba(240,234,220,0.7);margin-bottom:6px;">じっくり知りたい方へ</div>
-          <div style="font-family:'Cinzel',serif;font-size:20px;color:#7ac4a0;">¥0</div>
-          <div style="margin-top:8px;background:linear-gradient(135deg,#1a7a3c,#2a8a50);color:#fff;font-size:11px;font-weight:700;border-radius:8px;padding:6px 12px;">💬 無料で受け取る</div>
-        </a>
+    <!-- ★ 手相ナッジ -->
+    <div class="teso-nudge">
+      <div class="teso-nudge-title">🤲 より詳しく知りたい方へ</div>
+      <div class="teso-nudge-body">
+        この占いは"今の流れ"を示しますが、<br/>
+        あなたの本質や人生の流れは手相にも表れます。<br/>
+        無料手相診断では、左手と右手から<br/>
+        本来の自分と今の状態を読み解きます。
       </div>
-      <!-- ③ ¥1,980直課金（LINEではなくStripe） -->
-      <a href="https://buy.stripe.com/14A8wIbTEf8C9ANfRx33W03" target="_blank" class="mid-cta">
-        <div style="font-size:10px;color:#c4a8f0;letter-spacing:2px;margin-bottom:3px;">3テーマ詳細鑑定</div>
-        <div style="font-size:13px;color:var(--white);font-weight:500;">しっかり知りたい方へ（¥1,980）</div>
-        <div style="font-size:11px;color:rgba(240,234,220,0.4);margin-top:3px;">恋愛・仕事・金運をまとめて · 即時表示</div>
+      <a href="https://lin.ee/XHDFrA8" class="teso-nudge-btn" target="_blank" rel="noopener">
+        💬 LINEで無料手相診断を受ける
       </a>
     </div>
 
-    <!-- 総合鑑定（¥3,980・/star/sogo） -->
-    <div class="bundle">
-      <div class="bundle-title">✦ AI総合鑑定 ✦</div>
-      <p class="bundle-desc">ホロスコープ ＋ 四柱推命 ＋ タロット3枚 ＋ 数秘術<br>過去・現在・未来をAIが完全解析します</p>
-      <div class="bundle-feats">
-        <span class="bundle-feat">ホロスコープ図面</span>
-        <span class="bundle-feat">四柱推命</span>
-        <span class="bundle-feat">タロット3枚</span>
-        <span class="bundle-feat">数秘術</span>
+    <!-- LINE導線 -->
+    <div class="line-block">
+      <div class="line-block-title">
+        <strong>🎁 LINE登録で特典を受け取る</strong>
+        開運情報・限定占いをLINEでお届けします
       </div>
-      <div class="bundle-price">¥3,980</div>
-      <div class="bundle-price-sub">即時表示 · PDFダウンロード付き · 🔒 安全な決済</div>
-      <a href="https://twinkle-lab.jp/star/sogo" class="bundle-btn">✦ AI総合鑑定を受ける ✦</a>
+      <a href="https://lin.ee/XHDFrA8" class="line-btn" target="_blank" rel="noopener">
+        💬 LINEで登録する（無料）
+      </a>
     </div>
 
-    <!-- ⑤ 回遊導線 -->
+    <!-- ★ AI総合鑑定（統一文言） -->
+    <div class="bundle">
+      <div class="bundle-label">✦ Premium · AI完全解析 ✦</div>
+      <div class="bundle-title">AI総合鑑定（手相＋複数占術）</div>
+      <div class="bundle-desc">
+        手相・タロット・数秘術・ホロスコープなどを組み合わせ、<br/>
+        恋愛・仕事・金運・人生の流れを総合的に読み解きます
+      </div>
+      <div class="bundle-price-orig">通常¥4,980相当</div>
+      <div class="bundle-price">¥3,980</div>
+      <div class="bundle-price-sub">鑑定結果はLINEでお届け · PDF送付</div>
+      <a href="https://twinkle-lab.jp/star/sogo" class="bundle-btn">✦ AI総合鑑定を申し込む ✦</a>
+    </div>
+
     <div class="rec-section">
       <div class="rec-title">✦ あなたにおすすめの占い ✦</div>
       <div class="rec-grid">
@@ -344,24 +310,24 @@ var HEXAGRAMS = [
   {num:12,name:'天地否',read:'てんちひ',upper:'乾',lower:'坤',kw:'停滞・忍耐',symbol:'天地が離れ交わらない閉塞',fortune:'凶',yao:[1,1,1,0,0,0],msg:'天と地が離れ離れになり、気の流れが滞っている状態です。今は物事が思うように進まず、人間関係にも摩擦が生じやすい時期です。しかしこれは永遠には続きません。\n\n今は無理に動こうとせず、内側を整える時間と捉えましょう。力を蓄え、準備を整え、流れが変わるのを待つ知恵が必要です。この逆境の中でも小さな善を積み重ねることで、必ず転換点が訪れます。',advice:['無理に動かず内側を整える時','力を蓄え次の好機を待つ','小さな善行と誠実さを積み重ねる','逆境は必ず転換点に変わると信じる']},
   {num:13,name:'天火同人',read:'てんかどうじん',upper:'乾',lower:'離',kw:'協力・同志',symbol:'天下に同志を求める大きな志',fortune:'吉',yao:[1,1,1,1,0,1],msg:'同じ志を持つ仲間と力を合わせることで大きな成果が生まれる卦です。一人では難しいことも、心を合わせた仲間とともに取り組むことで道が開けます。\n\n人との絆と協力関係を大切にする時です。信頼できる仲間を見つけ、共通の目標に向かって共に歩んでください。また、自分の考えを広く表明することで共鳴する人が集まってきます。',advice:['同じ志の仲間と力を合わせる','自分の考えを広く発信する','人との信頼関係を丁寧に築く','一人で抱え込まず協力を求める']},
   {num:17,name:'沢雷随',read:'たくらいずい',upper:'兌',lower:'震',kw:'随順・柔軟',symbol:'雷が沢の下に潜む柔軟な変化',fortune:'吉',yao:[0,1,1,0,0,1],msg:'時代の流れや周囲の動きに柔軟に対応することが吉をもたらす卦です。固執せず、変化を受け入れながら賢く対応することで、思わぬ幸運が訪れます。\n\n「随」は従うことですが、盲目的な服従ではなく、時の流れを読んで最善の選択をすることを意味しています。あなたの柔軟性と適応力が今最大の武器です。',advice:['時流を読んで柔軟に対応する','固執を手放し変化を受け入れる','流れに乗りながら芯はぶらさない','謙虚に学び続ける姿勢が開運に']},
-  {num:22,name:'山火賁',read:'さんかひ',upper:'艮',lower:'離',kw:'美・装い',symbol:'火が山麓を照らす美しい光景',fortune:'中吉',yao:[1,0,0,1,0,1],msg:'美しさと装いの卦です。外見を整え、表現を磨くことが重要な時期です。内面の充実を美しい形で表現することで、周囲から認められ、良い印象を与えられます。\n\nただし、飾りすぎには注意が必要です。本質的な誠実さに美しい表現が加わることで真の輝きが生まれます。芸術・デザイン・コミュニケーション・人前に出る機会に特に良い影響をもたらす卦です。',advice:['外見や表現を丁寧に磨く','見た目と中身の両方を大切に','美しい言葉と態度で人と接する','表現力を活かした活動が吉']},
+  {num:22,name:'山火賁',read:'さんかひ',upper:'艮',lower:'離',kw:'美・装い',symbol:'火が山麓を照らす美しい光景',fortune:'中吉',yao:[1,0,0,1,0,1],msg:'美しさと装いの卦です。外見を整え、表現を磨くことが重要な時期です。内面の充実を美しい形で表現することで、周囲から認められ、良い印象を与えられます。\n\nただし、飾りすぎには注意が必要です。本質的な誠実さに美しい表現が加わることで真の輝きが生まれます。',advice:['外見や表現を丁寧に磨く','見た目と中身の両方を大切に','美しい言葉と態度で人と接する','表現力を活かした活動が吉']},
   {num:29,name:'坎為水',read:'かんいすい',upper:'坎',lower:'坎',kw:'険難・知恵',symbol:'深い淵が重なる試練の時',fortune:'凶→吉',yao:[0,1,0,0,1,0],msg:'険しい水が重なり合う、試練の卦です。しかし水は険しい谷をも流れ続けます。今あなたが直面している困難は、乗り越えることで深い知恵と経験を与えてくれます。\n\n危険を正確に見極め、慎重に一歩一歩進んでください。誠実さを保ち、信頼できる人との繋がりを大切にすることで、この難局を乗り越えられます。',advice:['危険を正確に見極めて慎重に行動する','誠実さを最後まで保ち続ける','信頼できる人との絆を大切にする','困難を知恵と経験に変える覚悟を持つ']},
   {num:30,name:'離為火',read:'りいか',upper:'離',lower:'離',kw:'文明・明智',symbol:'二つの太陽が輝く燃える知性',fortune:'吉',yao:[1,0,1,1,0,1],msg:'二つの火が重なり燃え輝く、文明と知性の卦です。あなたの中に輝く知性と情熱が、周囲を照らし多くの人を引きつけています。この明るさと熱量を大切にしてください。\n\n学問・芸術・コミュニケーションにおいて優れた能力が発揮できる時期です。自分の才能と情熱を信じて、積極的に表現し発信してください。',advice:['才能と情熱を積極的に表現する','学び・芸術・発信活動が吉','自分の光を周囲と分かち合う','燃え尽きないよう心身を整える']},
-  {num:31,name:'沢山咸',read:'たくさんかん',upper:'兌',lower:'艮',kw:'感応・縁',symbol:'山と沢が感応し合う出会い',fortune:'大吉',yao:[0,1,1,1,0,0],msg:'心が感応し合う出会いと縁の卦です。人と人との深い共鳴、恋愛や人間関係において特に良い影響をもたらします。あなたの心が開かれ、素直な感情が良縁を引き寄せています。\n\n理屈より感情を大切にしてください。打算なく心から接することで、深い絆が生まれます。恋愛においては積極的な行動が吉です。',advice:['素直な気持ちで人と接する','打算なく感情を大切にする','恋愛・人間関係に積極的になる','心から共鳴できる縁を大切にする']},
-  {num:32,name:'雷風恒',read:'らいふうこう',upper:'震',lower:'巽',kw:'恒久・継続',symbol:'雷と風が恒久に続く持続の力',fortune:'吉',yao:[1,0,0,1,1,0],msg:'恒久・継続の卦です。長く続けることの大切さと、変わらない誠実さが吉をもたらします。今取り組んでいることを継続する意志を持ち続けることが最大の開運策です。\n\nすぐに結果が出なくても、諦めないでください。コツコツと積み上げてきたものが、やがて大きな実りとなって現れます。継続は力なり、を体現する時です。',advice:['継続と誠実さが最大の武器と知る','すぐ結果が出なくても諦めない','コツコツ積み上げた努力を信じる','一貫した姿勢で物事に取り組む']},
-  {num:36,name:'地火明夷',read:'ちかめいい',upper:'坤',lower:'離',kw:'忍耐・隠忍',symbol:'太陽が大地に沈む試練の時',fortune:'凶→吉',yao:[0,0,0,1,0,1],msg:'光が地下に隠れる試練の時を示す卦です。今は才能や努力が正当に評価されない、または困難な状況に置かれているかもしれません。しかしこれは永久ではありません。\n\n内なる光を消さないことが最も大切です。表面的には従順に振る舞いながら、内側では志と知恵を磨き続けてください。嵐が過ぎれば必ず太陽は再び昇ります。',advice:['内なる志と光を絶やさない','表面は柔らかく内面は強く保つ','力を蓄え飛躍の時に備える','今の試練が未来の糧になると信じる']},
+  {num:31,name:'沢山咸',read:'たくさんかん',upper:'兌',lower:'艮',kw:'感応・縁',symbol:'山と沢が感応し合う出会い',fortune:'大吉',yao:[0,1,1,1,0,0],msg:'心が感応し合う出会いと縁の卦です。人と人との深い共鳴、恋愛や人間関係において特に良い影響をもたらします。あなたの心が開かれ、素直な感情が良縁を引き寄せています。\n\n理屈より感情を大切にしてください。打算なく心から接することで、深い絆が生まれます。',advice:['素直な気持ちで人と接する','打算なく感情を大切にする','恋愛・人間関係に積極的になる','心から共鳴できる縁を大切にする']},
+  {num:32,name:'雷風恒',read:'らいふうこう',upper:'震',lower:'巽',kw:'恒久・継続',symbol:'雷と風が恒久に続く持続の力',fortune:'吉',yao:[1,0,0,1,1,0],msg:'恒久・継続の卦です。長く続けることの大切さと、変わらない誠実さが吉をもたらします。今取り組んでいることを継続する意志を持ち続けることが最大の開運策です。\n\nすぐに結果が出なくても、諦めないでください。コツコツと積み上げてきたものが、やがて大きな実りとなって現れます。',advice:['継続と誠実さが最大の武器と知る','すぐ結果が出なくても諦めない','コツコツ積み上げた努力を信じる','一貫した姿勢で物事に取り組む']},
+  {num:36,name:'地火明夷',read:'ちかめいい',upper:'坤',lower:'離',kw:'忍耐・隠忍',symbol:'太陽が大地に沈む試練の時',fortune:'凶→吉',yao:[0,0,0,1,0,1],msg:'光が地下に隠れる試練の時を示す卦です。今は才能や努力が正当に評価されない、または困難な状況に置かれているかもしれません。しかしこれは永久ではありません。\n\n内なる光を消さないことが最も大切です。表面的には従順に振る舞いながら、内側では志と知恵を磨き続けてください。',advice:['内なる志と光を絶やさない','表面は柔らかく内面は強く保つ','力を蓄え飛躍の時に備える','今の試練が未来の糧になると信じる']},
   {num:40,name:'雷水解',read:'らいすいかい',upper:'震',lower:'坎',kw:'解放・解決',symbol:'雷雨の後の大地の解放',fortune:'吉',yao:[1,0,0,0,1,0],msg:'長く続いた困難や緊張が解けていく解放の卦です。雷雨の後に大地が潤うように、あなたを縛っていたものから解き放たれる時が来ています。\n\n今まで抱えていた問題が解決に向かい、人間関係の摩擦も和らいでいきます。過去の失敗や過ちを水に流し、新しいスタートを切るのに最良の時です。',advice:['執着と過去を手放して前に進む','解決に向けた積極的な行動を','人間関係の和解・修復が吉','軽やかに新しいスタートを切る']},
-  {num:42,name:'風雷益',read:'ふうらいえき',upper:'巽',lower:'震',kw:'増益・発展',symbol:'風と雷が益をもたらす発展',fortune:'大吉',yao:[1,1,0,0,0,1],msg:'益が増し発展していく大吉の卦です。今のあなたには幸運の風が吹いており、取り組んでいることが実を結びやすい最良の時期です。大きな変化や新しい挑戦にも吉です。\n\n利他の精神、つまり人のためになることをすると、その何倍もの恵みが返ってきます。今この好機を逃さず、積極的に行動してください。',advice:['この好機を逃さず積極的に行動する','人のためになることを率先して行う','大きな目標を持って挑戦する','今が最良のタイミングと知って動く']},
-  {num:48,name:'水風井',read:'すいふうせい',upper:'坎',lower:'巽',kw:'根本・源泉',symbol:'深い井戸から湧き出る命の水',fortune:'中吉',yao:[0,1,0,1,1,0],msg:'深い井戸のように、根本に立ち返ることを示す卦です。あなたの中に豊かな才能と知恵という井戸があります。今はその源泉を改めて見つめ直し、磨く時期です。\n\n焦って表面的な成果を求めるより、基礎・本質・根本を丁寧に整えることが長期的な成功につながります。惜しみなく分かち合うことで、さらに豊かな水が湧き出てきます。',advice:['基礎と本質を丁寧に見直す','自分の中にある才能という井戸を磨く','知識やスキルを惜しみなく分かち合う','焦らず根本から積み上げる']},
-  {num:49,name:'沢火革',read:'たくかかく',upper:'兌',lower:'離',kw:'変革・刷新',symbol:'火が沢を沸かす大変革',fortune:'大吉',yao:[0,1,1,1,0,1],msg:'大きな変革と刷新を示す卦です。古いものを手放し、新しいものへと生まれ変わる時が来ています。今感じている変化への衝動は、正しい直感です。\n\n過去の習慣・考え方・環境を大胆に刷新することで、新しい可能性が開けます。ただし、変革は慎重に準備してから行うことが大切です。',advice:['大胆な変革・刷新に踏み切る','古い習慣や考え方を手放す','準備を整えてから行動する','変化を恐れず自分を刷新する']},
-  {num:51,name:'震為雷',read:'しんいらい',upper:'震',lower:'震',kw:'震動・覚醒',symbol:'雷が重なり響き渡る覚醒',fortune:'中吉',yao:[1,0,0,1,0,0],msg:'雷が重なり大地を震わせる、驚きと覚醒の卦です。突然の変化や衝撃的な出来事が起こるかもしれませんが、それはあなたを目覚めさせるための天の働きです。\n\n驚きの中でも冷静さを保ち、その震動の中から本質を見出してください。この経験があなたを次のステージへと引き上げます。',advice:['突然の変化を恐れず受け入れる','冷静さを保ちながら本質を見極める','驚きの中から学びと成長を得る','変化の後の清々しさを信じる']},
-  {num:52,name:'艮為山',read:'ごんいさん',upper:'艮',lower:'艮',kw:'静止・内省',symbol:'山が重なる静かな内省',fortune:'中吉',yao:[0,0,1,0,0,1],msg:'山が重なり静かに佇む、止まることと内省の卦です。今は外に向かって動くより、立ち止まって自分の内側を見つめ直す時期です。\n\n行動を一時止め、自分が本当に望むことは何か、何のために動いているのかを深く問い直してください。この静寂の中から、次の大きな一歩への確かな方向性が見えてきます。',advice:['立ち止まって内省する時間を持つ','本当に望むことを深く問い直す','焦らず静かに次の方向性を見極める','山のような動じない心を養う']},
-  {num:54,name:'雷沢帰妹',read:'らいたくきまい',upper:'震',lower:'兌',kw:'焦り・不正な縁',symbol:'雷と沢の不釣り合いな関係',fortune:'凶',yao:[1,0,0,0,1,1],msg:'焦りや不釣り合いな縁・状況を示す卦です。今の状況に無理や強引さがないか振り返ってみてください。焦りから動くと後悔につながりやすい時です。\n\nしかしこの卦は終わりではありません。自分の立場と役割を正しく認識し、誠実に行動することで、この状況を乗り越えられます。',advice:['焦って行動しない','現状を正直に見つめ直す','自分の本来の姿と誠実さを取り戻す','時の熟するのを待つ勇気を持つ']},
-  {num:57,name:'巽為風',read:'そんいふう',upper:'巽',lower:'巽',kw:'浸透・柔軟',symbol:'風が重なり柔らかく浸透する',fortune:'吉',yao:[1,1,0,1,1,0],msg:'風が柔らかく重なり、どこにでも入り込む浸透の卦です。強引な力より、柔軟さと粘り強さで物事を進める時期です。水や風のように、あらゆる隙間に浸透していく戦略が有効です。\n\n人の話をよく聞き、空気を読み、タイミングを見計らって行動することで、思わぬところから道が開けます。',advice:['柔軟さと粘り強さで物事を進める','人の話をよく聞きタイミングを見極める','小さな積み重ねを大切にする','強引さより浸透する力を使う']},
-  {num:58,name:'兌為沢',read:'だいたく',upper:'兌',lower:'兌',kw:'喜悦・悦び',symbol:'沢が重なる喜びと交流',fortune:'吉',yao:[0,1,1,0,1,1],msg:'喜びと悦楽、そして人との交流を示す吉卦です。今はあなたの周りに喜びと笑顔が満ちています。人と交わり、語り合い、共に喜ぶことで運気がさらに高まります。\n\n素直な喜びの表現がさらなる幸運を引き寄せます。笑顔で人に接し、喜びを分かち合ってください。',advice:['素直な喜びを表現する','人との交流を積極的に楽しむ','笑顔で物事に向き合う','喜びを周囲と分かち合う']},
-  {num:61,name:'風沢中孚',read:'ふうたくちゅうふ',upper:'巽',lower:'兌',kw:'誠信・真心',symbol:'風が沢に吹き込む純粋な真心',fortune:'大吉',yao:[1,1,0,0,1,1],msg:'真心と誠信の卦です。あなたの誠実さと純粋な気持ちが、人々の心に深く届いています。打算なく真心から行動することが最大の吉をもたらします。\n\n誠実さは最強の武器です。言葉より行動で、行動より真心で人と接してください。信頼関係を大切にすることで、大きな実りがもたらされます。',advice:['打算なく真心から行動する','言葉より行動・行動より真心で','誠実さを最大の強みとして活かす','信頼関係を何より大切にする']},
-  {num:63,name:'水火既済',read:'すいかきさい',upper:'坎',lower:'離',kw:'完成・整然',symbol:'水と火が調和した完成の姿',fortune:'中吉→注意',yao:[0,1,0,1,0,1],msg:'水と火が完璧に調和した完成の卦です。物事が整い、目標の完成が近づいています。しかし、完成した後の油断が最大の落とし穴です。\n\n今の安定した状況に慢心せず、常に次の準備と改善を続けることが重要です。完成に満足しつつも、さらなる高みを目指す意識を持ち続けましょう。',advice:['完成・成功に慢心しない','常に改善と次の準備を続ける','謙虚さと緊張感を保つ','安定の中でも向上心を忘れない']},
-  {num:64,name:'火水未済',read:'かすいびさい',upper:'離',lower:'坎',kw:'未完・可能性',symbol:'火と水が交わらない未完の状態',fortune:'中吉',yao:[1,0,1,0,1,0],msg:'まだ完成していない、しかし可能性に満ちた卦です。今は混沌としているように見えますが、その中に無限の可能性が宿っています。完成への道はすぐそこです。\n\n焦らず、慎重に最後まで丁寧に取り組んでください。ゴール直前での油断や焦りが最大の敵です。',advice:['焦らず慎重に最後まで取り組む','ゴール直前の油断に注意する','混沌の中の可能性を信じる','丁寧に積み上げれば必ず完成する']},
+  {num:42,name:'風雷益',read:'ふうらいえき',upper:'巽',lower:'震',kw:'増益・発展',symbol:'風と雷が益をもたらす発展',fortune:'大吉',yao:[1,1,0,0,0,1],msg:'益が増し発展していく大吉の卦です。今のあなたには幸運の風が吹いており、取り組んでいることが実を結びやすい最良の時期です。\n\n利他の精神、つまり人のためになることをすると、その何倍もの恵みが返ってきます。今この好機を逃さず、積極的に行動してください。',advice:['この好機を逃さず積極的に行動する','人のためになることを率先して行う','大きな目標を持って挑戦する','今が最良のタイミングと知って動く']},
+  {num:48,name:'水風井',read:'すいふうせい',upper:'坎',lower:'巽',kw:'根本・源泉',symbol:'深い井戸から湧き出る命の水',fortune:'中吉',yao:[0,1,0,1,1,0],msg:'深い井戸のように、根本に立ち返ることを示す卦です。あなたの中に豊かな才能と知恵という井戸があります。今はその源泉を改めて見つめ直し、磨く時期です。\n\n焦って表面的な成果を求めるより、基礎・本質・根本を丁寧に整えることが長期的な成功につながります。',advice:['基礎と本質を丁寧に見直す','自分の中にある才能という井戸を磨く','知識やスキルを惜しみなく分かち合う','焦らず根本から積み上げる']},
+  {num:49,name:'沢火革',read:'たくかかく',upper:'兌',lower:'離',kw:'変革・刷新',symbol:'火が沢を沸かす大変革',fortune:'大吉',yao:[0,1,1,1,0,1],msg:'大きな変革と刷新を示す卦です。古いものを手放し、新しいものへと生まれ変わる時が来ています。今感じている変化への衝動は、正しい直感です。\n\n過去の習慣・考え方・環境を大胆に刷新することで、新しい可能性が開けます。',advice:['大胆な変革・刷新に踏み切る','古い習慣や考え方を手放す','準備を整えてから行動する','変化を恐れず自分を刷新する']},
+  {num:51,name:'震為雷',read:'しんいらい',upper:'震',lower:'震',kw:'震動・覚醒',symbol:'雷が重なり響き渡る覚醒',fortune:'中吉',yao:[1,0,0,1,0,0],msg:'雷が重なり大地を震わせる、驚きと覚醒の卦です。突然の変化や衝撃的な出来事が起こるかもしれませんが、それはあなたを目覚めさせるための天の働きです。\n\n驚きの中でも冷静さを保ち、その震動の中から本質を見出してください。',advice:['突然の変化を恐れず受け入れる','冷静さを保ちながら本質を見極める','驚きの中から学びと成長を得る','変化の後の清々しさを信じる']},
+  {num:52,name:'艮為山',read:'ごんいさん',upper:'艮',lower:'艮',kw:'静止・内省',symbol:'山が重なる静かな内省',fortune:'中吉',yao:[0,0,1,0,0,1],msg:'山が重なり静かに佇む、止まることと内省の卦です。今は外に向かって動くより、立ち止まって自分の内側を見つめ直す時期です。\n\n行動を一時止め、自分が本当に望むことは何か、何のために動いているのかを深く問い直してください。',advice:['立ち止まって内省する時間を持つ','本当に望むことを深く問い直す','焦らず静かに次の方向性を見極める','山のような動じない心を養う']},
+  {num:54,name:'雷沢帰妹',read:'らいたくきまい',upper:'震',lower:'兌',kw:'焦り・不正な縁',symbol:'雷と沢の不釣り合いな関係',fortune:'凶',yao:[1,0,0,0,1,1],msg:'焦りや不釣り合いな縁・状況を示す卦です。今の状況に無理や強引さがないか振り返ってみてください。焦りから動くと後悔につながりやすい時です。\n\n自分の立場と役割を正しく認識し、誠実に行動することで、この状況を乗り越えられます。',advice:['焦って行動しない','現状を正直に見つめ直す','自分の本来の姿と誠実さを取り戻す','時の熟するのを待つ勇気を持つ']},
+  {num:57,name:'巽為風',read:'そんいふう',upper:'巽',lower:'巽',kw:'浸透・柔軟',symbol:'風が重なり柔らかく浸透する',fortune:'吉',yao:[1,1,0,1,1,0],msg:'風が柔らかく重なり、どこにでも入り込む浸透の卦です。強引な力より、柔軟さと粘り強さで物事を進める時期です。\n\n人の話をよく聞き、空気を読み、タイミングを見計らって行動することで、思わぬところから道が開けます。',advice:['柔軟さと粘り強さで物事を進める','人の話をよく聞きタイミングを見極める','小さな積み重ねを大切にする','強引さより浸透する力を使う']},
+  {num:58,name:'兌為沢',read:'だいたく',upper:'兌',lower:'兌',kw:'喜悦・悦び',symbol:'沢が重なる喜びと交流',fortune:'吉',yao:[0,1,1,0,1,1],msg:'喜びと悦楽、そして人との交流を示す吉卦です。今はあなたの周りに喜びと笑顔が満ちています。人と交わり、語り合い、共に喜ぶことで運気がさらに高まります。\n\n素直な喜びの表現がさらなる幸運を引き寄せます。',advice:['素直な喜びを表現する','人との交流を積極的に楽しむ','笑顔で物事に向き合う','喜びを周囲と分かち合う']},
+  {num:61,name:'風沢中孚',read:'ふうたくちゅうふ',upper:'巽',lower:'兌',kw:'誠信・真心',symbol:'風が沢に吹き込む純粋な真心',fortune:'大吉',yao:[1,1,0,0,1,1],msg:'真心と誠信の卦です。あなたの誠実さと純粋な気持ちが、人々の心に深く届いています。打算なく真心から行動することが最大の吉をもたらします。\n\n誠実さは最強の武器です。信頼関係を大切にすることで、大きな実りがもたらされます。',advice:['打算なく真心から行動する','言葉より行動・行動より真心で','誠実さを最大の強みとして活かす','信頼関係を何より大切にする']},
+  {num:63,name:'水火既済',read:'すいかきさい',upper:'坎',lower:'離',kw:'完成・整然',symbol:'水と火が調和した完成の姿',fortune:'中吉→注意',yao:[0,1,0,1,0,1],msg:'水と火が完璧に調和した完成の卦です。物事が整い、目標の完成が近づいています。しかし、完成した後の油断が最大の落とし穴です。\n\n今の安定した状況に慢心せず、常に次の準備と改善を続けることが重要です。',advice:['完成・成功に慢心しない','常に改善と次の準備を続ける','謙虚さと緊張感を保つ','安定の中でも向上心を忘れない']},
+  {num:64,name:'火水未済',read:'かすいびさい',upper:'離',lower:'坎',kw:'未完・可能性',symbol:'火と水が交わらない未完の状態',fortune:'中吉',yao:[1,0,1,0,1,0],msg:'まだ完成していない、しかし可能性に満ちた卦です。今は混沌としているように見えますが、その中に無限の可能性が宿っています。\n\n焦らず、慎重に最後まで丁寧に取り組んでください。ゴール直前での油断や焦りが最大の敵です。',advice:['焦らず慎重に最後まで取り組む','ゴール直前の油断に注意する','混沌の中の可能性を信じる','丁寧に積み上げれば必ず完成する']},
 ];
 
 var currentHex = null;
@@ -414,24 +380,13 @@ document.getElementById('js-btn').addEventListener('click', function() {
     document.getElementById('js-symbol').textContent = hex.symbol;
     document.getElementById('js-fortune').textContent = hex.fortune;
 
-    // ④ メッセージ：35%のみ表示（65%ブラー）
-    var _fullMsg = hex.msg.replace(/\n/g, '<br>');
-    var _show = Math.floor(_fullMsg.length * 0.35);
-    document.getElementById('js-msg').innerHTML = _fullMsg.substring(0, _show);
-    document.getElementById('js-msg-blur').innerHTML = _fullMsg.substring(_show);
+    document.getElementById('js-msg').innerHTML = hex.msg.replace(/\n/g, '<br>');
 
-    // ① アドバイス：2件のみ表示、残りはブラー
     var adviceHtml = '';
-    var adviceBlurHtml = '';
     for (var i = 0; i < hex.advice.length; i++) {
-      if (i < 2) {
-        adviceHtml += '<li>' + hex.advice[i] + '</li>';
-      } else {
-        adviceBlurHtml += '<li>' + hex.advice[i] + '</li>';
-      }
+      adviceHtml += '<li>' + hex.advice[i] + '</li>';
     }
     document.getElementById('js-advice').innerHTML = adviceHtml;
-    document.getElementById('js-advice-blur').innerHTML = adviceBlurHtml;
 
     document.getElementById('js-loading').style.display = 'none';
     document.getElementById('js-result').style.display = 'block';
@@ -462,15 +417,5 @@ document.getElementById('js-share-copy').addEventListener('click', function() {
   }
 });
 </script>
-
-<!-- 固定バナー：¥500直課金に変更 -->
-<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#1a0a20,#0a0e1a);border-top:1px solid rgba(201,168,76,0.4);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);">
-  <div style="flex:1;">
-    <div style="font-size:11px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:2px;">🔮 即・結果表示</div>
-    <div style="font-size:13px;color:#f0eadc;font-weight:500;line-height:1.4;">今すぐ詳しく知る（¥500）</div>
-  </div>
-  <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,#8a6a20,#c9a84c,#8a6a20);background-size:200% 100%;border:none;border-radius:8px;color:#0a0e1a;font-family:Cinzel,serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:12px 20px;text-decoration:none;white-space:nowrap;flex-shrink:0;">今すぐ鑑定する →</a>
-</div>
-<div style="height:70px;"></div>
 </body>
 </html>
